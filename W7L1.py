@@ -1,5 +1,5 @@
 # Framework for Conway's game of life
-# Daniel Neumann
+# Daniel Rash
 # CIS 125 FA2104
 
 # Functions
@@ -54,6 +54,7 @@ def display(world, h = 22, w = 80):
 
 def generation(petri_dish, h=22, w=80):
     new_world = []
+    populate(new_world,h,w)
     for x in range(h):
         row = []
         for y in range(w):
@@ -76,16 +77,16 @@ def generation(petri_dish, h=22, w=80):
             if petri_dish[x][y] == 0:
                 if n == 3:
                     new_world[x][y] = 1
-            #else:
-                #new_world[x][y] = 0
+                else:
+                    new_world[x][y] = 0
             else: #(cell is alive)
                 if n < 2 or n > 3:
                     new_world[x][y] = 0
-            # else:
-                #new_world[x][y] = 1
+                else:
+                    new_world[x][y] = 1
     
     print(new_world)
-    petri_dish = new_world
+    petri_dish[:] = new_world
 
 
 def main():
@@ -100,7 +101,7 @@ def main():
         display(world, height, width)
         key = input("Press q to quit, any other key to continue: ")
 
-    print("Goodbye")
+    print("Goodbye!")
 
 
 if __name__ == '__main__':
